@@ -1,4 +1,3 @@
-/* Gmail for extension User javascript and CSS */
 .yX { /* from */
 	-webkit-flex-basis: 80px !important;
 	width: 80px !important;
@@ -6,16 +5,28 @@
 	text-wrap: pretty;
 }
 .xT { /* subject and body */
-	-webkit-flex-basis: 80px !important;
+	-webkit-flex-basis: 800px !important;
 	width: 100%  !important;
 }
 .y6 { /* subject */
-	width: 80px;
+	/*width: flex !important;*/
+	padding-right: 1em;
+	word-wrap: word-wrap;
+	width: 100px;
+	height: 4em;
 }
 .y2 { /* body */
-	border: 1px solid red;
 	display: block !important;
-	height: 50px;
+	flex: none;
+	height: 4em;
 	width: 300px !important;
-	text-wrap: pretty;
+	text-wrap: pretty !important;
+	overflow: none !important;
+	text-overflow: ellipsis;
+}
+.brc { /* attachment */
+	max-width: 400px !important;
+}
+.yi { /* tag */
+flex: none !important;
 }

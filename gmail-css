@@ -1,0 +1,21 @@
+/* Gmail for extension User javascript and CSS */
+.yX { /* from */
+	-webkit-flex-basis: 80px !important;
+	width: 80px !important;
+	display: block;
+	text-wrap: pretty;
+}
+.xT { /* subject and body */
+	-webkit-flex-basis: 80px !important;
+	width: 100%  !important;
+}
+.y6 { /* subject */
+	width: 80px;
+}
+.y2 { /* body */
+	border: 1px solid red;
+	display: block !important;
+	height: 50px;
+	width: 300px !important;
+	text-wrap: pretty;
+}

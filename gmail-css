@@ -1,25 +1,25 @@
 .yX { /* from */
 	-webkit-flex-basis: 80px !important;
-	width: 80px !important;
+	width: 20% !important;
 	display: block;
 	text-wrap: pretty;
+	border: 1px solid red;
 }
 .xT { /* subject and body */
-	-webkit-flex-basis: 800px !important;
+	-webkit-flex-basis: 1800px !important;
 	width: 100%  !important;
 }
 .y6 { /* subject */
 	/*width: flex !important;*/
 	padding-right: 1em;
 	word-wrap: word-wrap;
-	width: 100px;
-	height: 4em;
+	width: 20%;
+	height: 2em;
 }
 .y2 { /* body */
 	display: block !important;
 	flex: none;
-	height: 4em;
-	width: 300px !important;
+	width: 80% !important;
 	text-wrap: pretty !important;
 	overflow: none !important;
 	text-overflow: ellipsis;

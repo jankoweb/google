@@ -1,0 +1,56 @@
+/* Optimize Gmail view */
+/* whole line */
+.zA {
+	padding: 2px !important;
+}
+.zA td {
+	    align-items: normal;
+}
+/* from */
+.yX {
+	-webkit-flex-basis: 100px !important;
+	width: 100px !important;
+	height: 3em !important;
+}
+.yP, .yF, .zF { /* wrap from */
+		width: 100px;
+		text-wrap: balance !important;
+}
+/* subject and body */
+.xT {
+	-webkit-flex-basis: 800px !important;
+	width: 100%  !important;
+}
+/* subject */
+.y6 { 
+	/*width: flex !important;*/
+	padding-right: 0em;
+	width: 200px;
+}
+.bqe, .bog {
+	text-wrap: balance !important;
+}
+/* body */
+.y2 { 
+	display: block !important;
+	flex: none;
+	width: 300px !important;
+	text-wrap: balance !important;
+	overflow: none !important;
+	text-overflow: ellipsis;
+}
+/* remove dash from text body */
+.Zt {
+	display: none;
+}
+/* attachment */
+.brc { 
+	max-width: 400px !important;
+}
+/* tag */
+.yi { 
+flex: none !important;
+position: absolute;
+right: 0px;
+bottom: 5px;
+}

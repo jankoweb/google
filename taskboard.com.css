@@ -1,0 +1,40 @@
+/* 
+.fNQePp - column
+.eXstyY - column when moving task by mouse, 
+ devTool / Sources / in right menu Event Listener / Drag and Drop
+ see [https://stackoverflow.com/questions/22597815/chrome-inspect-elements-that-appear-only-when-dragging]
+.gOPzNx - Add new list column
+*/
+
+/* tasks */
+.caAPtG, .iXFuHf {
+	width: 100% !important;
+}
+
+/* 3dot menu */
+.QRjI {
+	display: none;
+}
+
+
+/* add new list column */
+.gOPzNx {
+	position: absolute;
+	right: 10px;
+	top: 30px;
+}
+
+/* columns with tasks */
+.fNQePp, .eXstyY {
+	padding: 0px !important;
+	margin: 2px !important;
+	/* / - number of columns and some more;) */
+	width: calc(100vw / 4.3) !important;
+}
+/* horizontal scrollbar in lists  */
+.fDuXWL, .bvjFuO {
+	overflow-x: hidden !important;
+}
+::-webkit-scrollbar {
+width: 7px;
+}

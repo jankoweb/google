@@ -18,14 +18,17 @@
 }
 /* subject and body */
 .xT {
-	-webkit-flex-basis: 800px !important;
+	-webkit-flex-basis: 900px !important;
 	width: 100%  !important;
 }
 /* subject */
 .y6 { 
-	/*width: flex !important;*/
 	padding-right: 0em;
-	width: 200px;
+	width: 19%;
+	/*
+	width: flex !important;
+	text-wrap: balance !important;
+	*/
 }
 .bqe, .bog {
 	text-wrap: balance !important;
@@ -34,14 +37,20 @@
 .y2 { 
 	display: block !important;
 	flex: none;
-	width: 300px !important;
+	width: 80% !important;
 	text-wrap: balance !important;
 	overflow: none !important;
 	text-overflow: ellipsis;
+	padding-right: 0em;
 }
 /* remove dash from text body */
 .Zt {
 	display: none;
+}
+/* empty column, date and time */
+.yf, .xW, .byZ {
+	position: absolute !important;
+	right: 20px;
 }
 /* attachment */
 .brc { 
@@ -53,4 +62,10 @@ flex: none !important;
 position: absolute;
 right: 0px;
 bottom: 5px;
+}
+/* menu */
+.bq4 { 
+position: absolute;
+right: 0px;
+top: 5px;
 }

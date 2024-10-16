@@ -1,71 +1,152 @@
-/* Optimize Gmail view */
-/* whole line */
+/* Optimize Gmail View Stylesheet */
+
+/* General email row styling */
 .zA {
-	padding: 2px !important;
+    padding: 2px !important;
 }
+
+/* Align items normally within each table cell */
 .zA td {
-	    align-items: normal;
+    align-items: normal;
 }
-/* from */
+
+/* Sender column styling */
 .yX {
-	-webkit-flex-basis: 100px !important;
-	width: 100px !important;
-	height: 3em !important;
+    width: 100px !important;
+    height: auto !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.yP, .yF, .zF { /* wrap from */
-		width: 100px;
-		text-wrap: balance !important;
+
+/* Sender email text adjustments */
+.yP, .yF, .zF {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-/* subject and body */
+
+/* Subject and message container adjustments */
 .xT {
-	-webkit-flex-basis: 900px !important;
-	width: 100%  !important;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: left; /* Align text to the left */
 }
-/* subject */
-.y6 { 
-	padding-right: 0em;
-	width: 19%;
-	/*
-	width: flex !important;
-	text-wrap: balance !important;
-	*/
+
+/* Container for subject and date combined */
+.subject-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
 }
-.bqe, .bog {
-	text-wrap: balance !important;
+
+/* Subject styling */
+.y6 {
+    padding-right: 0.5em; /* Space between subject and date */
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Keep subject in one line */
+    text-align: left; /* Align subject to the left */
 }
-/* body */
-.y2 { 
-	display: block !important;
-	flex: none;
-	width: 80% !important;
-	text-wrap: balance !important;
-	overflow: none !important;
-	text-overflow: ellipsis;
-	padding-right: 0em;
+
+/* Date styling to follow the subject */
+.yf {
+    display: inline-block !important;
+    margin-left: 10px; /* Add spacing between subject and date */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-/* remove dash from text body */
+
+/* Message body styling - allow wrapping below the subject */
+.y2 {
+    display: block;
+    width: 100%;
+    overflow: visible !important; /* Allow entire message text to be displayed */
+    text-overflow: ellipsis;
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words if necessary */
+    margin-top: 5px; /* Space between subject/date and message body */
+    text-align: left; /* Align message body to the left */
+}
+
+/* Remove unnecessary dash from the text body */
 .Zt {
-	display: none;
+    display: none;
 }
-/* empty column, date and time */
-.yf, .xW, .byZ {
-	position: absolute !important;
-	right: 20px;
+
+/* Remove attachment icon completely but keep the name visible */
+.yf.xY svg {
+    display: none !important; /* Hide the attachment icon */
 }
-/* attachment */
-.brc { 
-	max-width: 400px !important;
+
+.brc {
+    display: block !important; /* Ensure the attachment name is visible */
+    max-width: 100% !important; /* Allow the attachment name to take the full available width */
+    white-space: normal; /* Allow the attachment name to wrap */
+    overflow: visible; /* Show the entire attachment name */
+    text-overflow: ellipsis;
+    margin-top: 5px; /* Add margin above the attachment name for spacing */
+    text-align: left; /* Align attachment name to the left */
 }
-/* tag */
-.yi { 
-flex: none !important;
-position: absolute;
-right: 0px;
-bottom: 5px;
+
+/* Tag adjustments */
+.yi {
+    position: absolute;
+    right: 0px;
+    bottom: 5px;
+    flex: none !important;
 }
-/* menu */
-.bq4 { 
-position: absolute;
-right: 0px;
-top: 5px;
+
+/* Menu (archive, delete, etc.) adjustments */
+.bq4 {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show menu next to date on hover */
+.zA:hover .bq4 {
+    opacity: 1;
+}
+
+/* Hide the column containing the star icon */
+.F.cf.zt colgroup col:nth-child(3),
+.apU.xY {
+    display: none !important;
+}
+
+/* Hide importance or priority icon */
+.WA.xY {
+    display: none !important; /* Hide importance or priority icon */
+}
+
+/* Ensure sender, subject, and message container is aligned properly */
+.yX.xY > div.yW,
+.yX.xY > div.xS > div.xT {
+    display: flex;
+    align-items: flex-start;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-direction: column; /* Stack the elements vertically */
+    text-align: left; /* Align text to the left */
+}
+
+/* Adjust general padding for alignment consistency */
+.yX.xY {
+    padding: 5px 10px;
+}
+
+/* Prevent text wrapping changes on hover */
+.zA:hover .xT, .zA:hover .y2, .zA:hover .y6 {
+    white-space: normal !important; /* Ensure wrapping remains consistent on hover */
+    overflow: visible !important; /* Keep entire text visible */
 }

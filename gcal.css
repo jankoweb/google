@@ -10,11 +10,14 @@
     z-index: 507;
 }
 .rGFpCd {
-    border-top: yellow solid 2000px;
-    border-bottom: ;: yellow solid 2000px;
+    border-top: black solid 5px;
     position: absolute;
-    z-index: 0;
+    z-index: 507;
     left: 0;
     right: 0;
     pointer-events: none;
+}
+/* day, header */
+.LvQ60d + .QIYAPb, .yzWBv.ChfiMc.F262Ye, .INK2ed.F262Ye {
+    background-color: yellow !important;
 }

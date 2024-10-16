@@ -17,7 +17,14 @@
     right: 0;
     pointer-events: none;
 }
-/* day, header */
+/* weekly: day, header */
 .LvQ60d + .QIYAPb, .yzWBv.ChfiMc.F262Ye, .INK2ed.F262Ye {
     background-color: yellow !important;
 }
+/* monthly: day */
+.o5s4T:has(.F262Ye) {
+    background-color: yellow !important; /* Nebo jakýkoliv jiný styl */
+}
+
+
+

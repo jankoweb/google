@@ -1,0 +1,20 @@
+.LvQ60d {
+    background: black;
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -18px;
+    width: 40px;
+    z-index: 507;
+}
+.rGFpCd {
+    border-top: yellow solid 2000px;
+    border-bottom: ;: yellow solid 2000px;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}

@@ -15,15 +15,19 @@ function replaceDatesInText(text) {
     twoWeekAgo.setDate(now.getDate() - 14);
 
     return text.replace(datePattern, (match, day, month) => {
-        const date = new Date();
-        date.setDate(parseInt(day));
-        date.setMonth(parseInt(month) - 1); // Měsíce jsou indexované od 0
+        const date = new Date(now.getFullYear(), parseInt(month) - 1, parseInt(day)); // Nastavíme rok aktuální
 
-				const dayAbbreviation = getCzechDayAbbreviation(date);
-        // Kontrola, zda je datum v poslednim tydnu
+        // Pokud datum neexistuje (např. 30.2.), vrátíme původní text
+        if (date.getDate() !== parseInt(day) || date.getMonth() !== parseInt(month) - 1) {
+            return match;
+        }
+
+        const dayAbbreviation = getCzechDayAbbreviation(date);
+
+        // Kontrola, zda je datum v poslednim tydnu nebo dvou týdnech
         if (date >= weekAgo && date <= now) {
             return `${dayAbbreviation} ${match}`;
-        } else if (date >= twoWeekAgo && date <= now) {
+        } else if (date >= twoWeekAgo && date < weekAgo) {
             return `> ${dayAbbreviation} ${match}`;
         }
 
@@ -48,4 +52,3 @@ function replaceOnPage() {
 
 // Spusteni funkce po nacteni stranky
 window.onload = replaceOnPage;
-

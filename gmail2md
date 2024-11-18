@@ -1,0 +1,25 @@
+javascript:(function() {
+    var emails = document.querySelectorAll(".zA"); // zA jsou řádky e-mailů v seznamu
+    var tasks = "";
+    
+    emails.forEach(function(email) {
+        var subject = email.querySelector(".bog").innerText;
+        var sender = email.querySelector(".yX .yP").innerText;
+        var snippet = email.querySelector(".y2").innerText.trim();
+        var date = email.querySelector(".xW .xT").getAttribute("title"); // Může být potřeba upravit dle struktury
+        
+        // Přeformátování data (Pokud nefunguje, musí se upravit podle struktury)
+        var formattedDate = new Date(date).toLocaleDateString("cs-CZ", {day: 'numeric', month: 'numeric', year: 'numeric'});
+
+        tasks += "- [ ] " + subject + " (" + sender + ") - " + snippet.substring(0, 50) + "..." + " - " + formattedDate + "\n";
+    });
+
+    // Zobrazení jako markdown
+    var textArea = document.createElement("textarea");
+    textArea.value = tasks;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+    alert("Úkoly z e-mailů zkopírovány do schránky!");
+})();

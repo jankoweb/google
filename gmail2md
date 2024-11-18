@@ -23,7 +23,7 @@ javascript:!function(){
         }
     }
     var i=location.href;
-    var d=""+t+"["+e+"]("+i+") ("+o+", "+l+") - "+a+"\n";
+    var d=t+"["+e+"]("+i+") ("+o+", "+l+") - "+a+"\n";
     var u=document.createElement("textarea");
     u.value=d,document.body.appendChild(u),u.select(),document.execCommand("copy"),document.body.removeChild(u);
     var p=document.createElement("div");

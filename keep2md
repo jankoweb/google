@@ -2,7 +2,7 @@ javascript:(function(){
     /*
     Tento bookmarklet slouží k vytvoření Markdown formátu z poznámky Google Keep.
     Postup:
-    1. Získá název a obsah aktuálně zobrazené poznámky (jinak nelze vzit odkaz a plný text).
+    1. Získá název a obsah aktuálně zobrazené poznámky.
     2. Generuje Markdown výstup obsahující odkaz na poznámku a její obsah.
     3. Zkopíruje tento výstup do schránky.
     4. Zobrazí notifikaci potvrzující úspěšné zkopírování s jednotným stylováním.

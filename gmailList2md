@@ -1,4 +1,5 @@
 javascript:(function() {
+    /* Bookmarklet, ktery vezme maily z prehledu gmailu a da je do schranky jako ukoly, bez odkazu na mail (nejde v prehledu)  */
     var emails = document.querySelectorAll(".zA"); // zA jsou řádky e-mailů v seznamu
     var tasks = "";
     

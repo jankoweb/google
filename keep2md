@@ -5,7 +5,7 @@ javascript:(function(){
     1. Získá název a obsah aktuálně zobrazené poznámky.
     2. Generuje Markdown výstup obsahující odkaz na poznámku a její obsah.
     3. Zkopíruje tento výstup do schránky.
-    4. Zobrazí notifikaci potvrzující úspěšné zkopírování s jednotným stylováním.
+    4. Zobrazí notifikaci potvrzující úspěšné zkopírování.
     */
     let elements=document.querySelectorAll('div.IZ65Hb-YPqjbf');
     let title=elements[elements.length-2]?elements[elements.length-2].innerText.trim():"Bez názvu";
@@ -20,13 +20,11 @@ javascript:(function(){
             notification.style.position="fixed";
             notification.style.bottom="20px";
             notification.style.right="20px";
-            notification.style.padding="10px 20px";
-            notification.style.backgroundColor="#4CAF50"; // Barva pozadí
-            notification.style.color="white"; // Barva textu
+            notification.style.padding="10px";
+            notification.style.backgroundColor="#4CAF50";
+            notification.style.color="#fff";
             notification.style.borderRadius="5px";
-            notification.style.boxShadow="0px 0px 10px rgba(0,0,0,0.5)";
-            notification.style.whiteSpace="pre-wrap";
-            notification.style.maxWidth="300px";
+            notification.style.zIndex="10000";
             document.body.appendChild(notification);
             setTimeout(()=>{document.body.removeChild(notification);},3000);
         }).catch(err=>{

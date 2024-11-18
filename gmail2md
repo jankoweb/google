@@ -1,1 +1,31 @@
-javascript:!function(){var t="✉%EF%B8%8F ",e=document.querySelector(".hP").innerText,o=document.querySelector(".gD")?.innerText||"Neznámý odesílatel",n=document.querySelectorAll(".ii.gt .a3s.aiL");n=n[n.length-1]?.innerText.replace(/\n/g," ").trim();var a=n.length>150?n.substring(0,150)+"...":n||"Bez obsahu";var dateElement=document.querySelector("span.g3[title]");var l="Neznámé datum";if(dateElement){var rawDate=dateElement.getAttribute("title");console.log("Nalezený datum (title atribut):",rawDate);var dateParts=rawDate.match(/(\d{2})\.\s(\d{2})\.\s(\d{4})\s(\d{2}):(\d{2})/);if(dateParts){var day=parseInt(dateParts[1]),month=parseInt(dateParts[2])-1,year=parseInt(dateParts[3]),hours=parseInt(dateParts[4]),minutes=parseInt(dateParts[5]),parsedDate=new Date(year,month,day,hours,minutes);if(!isNaN(parsedDate.getTime())){const daysShort=["ne","po","út","st","čt","pá","so"];const dayOfWeek=daysShort[parsedDate.getDay()];const dayNum=parsedDate.getDate().toString().padStart(2,"0");const monthNum=(parsedDate.getMonth()+1).toString().padStart(2,"0");l=`${dayOfWeek} ${dayNum}.${monthNum}.`;}else{l="Neplatný formát datumu"}}}var i=location.href;var d="- [ ] "+t+"["+e+"]("+i+") ("+o+", "+l+") - "+a+"\n";var u=document.createElement("textarea");u.value=d,document.body.appendChild(u),u.select(),document.execCommand("copy"),document.body.removeChild(u);var p=document.createElement("div");p.innerText="Úkol z e-mailu zkopírován do schránky:\n"+d,p.style.position="fixed",p.style.bottom="20px",p.style.right="20px",p.style.padding="10px 20px",p.style.backgroundColor="#4CAF50",p.style.color="white",p.style.borderRadius="5px",p.style.boxShadow="0px 0px 10px rgba(0,0,0,0.5)",p.style.whiteSpace="pre-wrap",p.style.maxWidth="300px",document.body.appendChild(p),setTimeout(function(){document.body.removeChild(p)},3e3)}();
+javascript:!function(){
+    /* Komentář: Tento bookmarklet kopíruje údaje z jednoho e-mailu do schránky ve formátu úkolu. */
+    var t="✉%EF%B8%8F ",e=document.querySelector(".hP").innerText,o=document.querySelector(".gD")?.innerText||"Neznámý odesílatel",n=document.querySelectorAll(".ii.gt .a3s.aiL");
+    n=n[n.length-1]?.innerText.replace(/\n/g," ").trim();
+    var a=n.length>150?n.substring(0,150)+"...":n||"Bez obsahu";
+    var dateElement=document.querySelector("span.g3[title]");
+    var l="Neznámé datum";
+    if(dateElement){
+        var rawDate=dateElement.getAttribute("title");
+        console.log("Nalezený datum (title atribut):",rawDate);
+        var dateParts=rawDate.match(/(\d{2})\.\s(\d{2})\.\s(\d{4})\s(\d{2}):(\d{2})/);
+        if(dateParts){
+            var day=parseInt(dateParts[1]),month=parseInt(dateParts[2])-1,year=parseInt(dateParts[3]),hours=parseInt(dateParts[4]),minutes=parseInt(dateParts[5]),parsedDate=new Date(year,month,day,hours,minutes);
+            if(!isNaN(parsedDate.getTime())){
+                const daysShort=["ne","po","út","st","čt","pá","so"];
+                const dayOfWeek=daysShort[parsedDate.getDay()];
+                const dayNum=parsedDate.getDate().toString().padStart(2,"0");
+                const monthNum=(parsedDate.getMonth()+1).toString().padStart(2,"0");
+                l=`${dayOfWeek} ${dayNum}.${monthNum}.`;
+            }else{
+                l="Neplatný formát datumu"
+            }
+        }
+    }
+    var i=location.href;
+    var d="- [ ] "+t+"["+e+"]("+i+") ("+o+", "+l+") - "+a+"\n";
+    var u=document.createElement("textarea");
+    u.value=d,document.body.appendChild(u),u.select(),document.execCommand("copy"),document.body.removeChild(u);
+    var p=document.createElement("div");
+    p.innerText="Úkol z e-mailu zkopírován do schránky:\n"+d,p.style.position="fixed",p.style.bottom="20px",p.style.right="20px",p.style.padding="10px 20px",p.style.backgroundColor="#4CAF50",p.style.color="white",p.style.borderRadius="5px",p.style.boxShadow="0px 0px 10px rgba(0,0,0,0.5)",p.style.whiteSpace="pre-wrap",p.style.maxWidth="300px",document.body.appendChild(p),setTimeout(function(){document.body.removeChild(p)},3e3)
+}();

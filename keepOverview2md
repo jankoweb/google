@@ -1,0 +1,63 @@
+javascript:(function(){
+    /*
+    Tento bookmarklet zkopíruje vybrané poznámky z Google Keep do schránky.
+    Poznámky musí být vybrané pomocí zaškrtávacího tlačítka.
+    POZOR! Kopíruje jen viditelný úryvek.
+    */
+    let notes = document.querySelectorAll('div.IZ65Hb-n0tgWb.IZ65Hb-WsjYwc-nUpftc');
+    let output = '';
+    notes.forEach(note => {
+        let isSelected = note.querySelector('div[aria-label="Zrušit výběr poznámky"]');
+        if (isSelected) {
+            let textboxes = note.querySelectorAll('div[role="textbox"]');
+            if (textboxes.length > 0) {
+                let title = textboxes[0].innerText.trim();
+                let content = textboxes.length > 1 ? textboxes[1].innerText.replace(/\n+$/g, "").trim() : "";
+                content && (content = content.replace(/\n+/g, " // ").trim());
+                if (title && content) {
+                    output += "- [ ] " + title + ": " + content + "\n";
+                } else if (title) {
+                    output += "- [ ] " + title + "\n";
+                } else if (content) {
+                    output += "- [ ] " + content + "\n";
+                }
+            }
+        }
+    });
+
+    if (output) {
+        navigator.clipboard.writeText(output).then(() => {
+            let notification = document.createElement("div");
+            notification.innerText = "Poznámky byly zkopírovány do schránky!";
+            notification.style.position = "fixed";
+            notification.style.bottom = "20px";
+            notification.style.right = "20px";
+            notification.style.padding = "10px 20px";
+            notification.style.backgroundColor = "#4CAF50";
+            notification.style.color = "white";
+            notification.style.borderRadius = "5px";
+            notification.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)";
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 3000);
+        }).catch(err => {
+            console.error("Nepodařilo se zkopírovat do schránky:", err);
+        });
+    } else {
+        let notification = document.createElement("div");
+        notification.innerText = "Nebyly nalezeny žádné vybrané poznámky.";
+        notification.style.position = "fixed";
+        notification.style.bottom = "20px";
+        notification.style.right = "20px";
+        notification.style.padding = "10px 20px";
+        notification.style.backgroundColor = "#f44336";
+        notification.style.color = "white";
+        notification.style.borderRadius = "5px";
+        notification.style.boxShadow = "0px 0px 10px rgba(0,0,0,0.5)";
+        document.body.appendChild(notification);
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 3000);
+    }
+})();

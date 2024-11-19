@@ -1,26 +1,65 @@
-javascript:(function() {
-    /* Bookmarklet, ktery vezme maily z prehledu gmailu a da je do schranky jako ukoly, bez odkazu na mail (nejde v prehledu)  */
-    var emails = document.querySelectorAll(".zA"); // zA jsou řádky e-mailů v seznamu
-    var tasks = "";
-    
-    emails.forEach(function(email) {
-        var subject = email.querySelector(".bog").innerText;
-        var sender = email.querySelector(".yX .yP").innerText;
-        var snippet = email.querySelector(".y2").innerText.trim();
-        var date = email.querySelector(".xW .xT").getAttribute("title"); // Může být potřeba upravit dle struktury
-        
-        // Přeformátování data (Pokud nefunguje, musí se upravit podle struktury)
-        var formattedDate = new Date(date).toLocaleDateString("cs-CZ", {day: 'numeric', month: 'numeric', year: 'numeric'});
+javascript:!function(){
+    var e=document.querySelectorAll("tr.zA"),t="";
+    e.forEach(function(e){
+        var n=e.querySelector(".bog"),
+            o=e.querySelector(".yW span.yP, .yW span.zF"),
+            a=e.querySelector(".y2"),
+            l=e.querySelector(".xW span[title]");
 
-        tasks += "- [ ] " + subject + " (" + sender + ") - " + snippet.substring(0, 50) + "..." + " - " + formattedDate + "\n";
+        var r=n?n.innerText:"Neznámý předmět",
+            c=o?o.getAttribute("name")||o.innerText:"Neznámý odesílatel",
+            i=a?a.innerText.trim():"Bez obsahu",
+            s=l?l.getAttribute("title"):"Neznámé datum",
+            m="";
+
+        if(s){
+            var d=new Date(s);
+            if(!isNaN(d.getTime())){
+                var days=["ne","po","út","st","čt","pá","so"];
+                m=d.toLocaleDateString("cs-CZ",{day:"numeric",month:"numeric",year:"numeric",hour:"2-digit",minute:"2-digit"})+" ("+days[d.getDay()]+")";
+            }
+        }
+
+        var u=n&&n.parentElement?n.parentElement.href:"#";
+        t+="- [ ] ["+r+"]("+u+") ("+c+") - "+i.substring(0,100)+(m?" - "+m:"")+"\n";
     });
 
-    // Zobrazení jako markdown
-    var textArea = document.createElement("textarea");
-    textArea.value = tasks;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textArea);
-    alert("Úkoly z e-mailů zkopírovány do schránky!");
-})();
+    if(t){
+        var n=document.createElement("textarea");
+        n.value=t;
+        document.body.appendChild(n);
+        n.select();
+        document.execCommand("copy");
+        document.body.removeChild(n);
+
+        var o=document.createElement("div");
+        o.innerText="Úkoly z e-mailů zkopírovány do schránky!";
+        o.style.position="fixed";
+        o.style.bottom="20px";
+        o.style.right="20px";
+        o.style.padding="10px 20px";
+        o.style.backgroundColor="#4CAF50";
+        o.style.color="white";
+        o.style.borderRadius="5px";
+        o.style.boxShadow="0px 0px 10px rgba(0,0,0,0.5)";
+        document.body.appendChild(o);
+        setTimeout(function(){
+            document.body.removeChild(o);
+        },3000);
+    }else{
+        var o=document.createElement("div");
+        o.innerText="Nebyly nalezeny žádné e-maily.";
+        o.style.position="fixed";
+        o.style.bottom="20px";
+        o.style.right="20px";
+        o.style.padding="10px 20px";
+        o.style.backgroundColor="#f44336";
+        o.style.color="white";
+        o.style.borderRadius="5px";
+        o.style.boxShadow="0px 0px 10px rgba(0,0,0,0.5)";
+        document.body.appendChild(o);
+        setTimeout(function(){
+            document.body.removeChild(o);
+        },3000);
+    }
+}();
